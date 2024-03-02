@@ -13,15 +13,21 @@ class TemporaryPageView extends StatefulWidget {
 }
 
 class _TemporaryPageViewState extends State<TemporaryPageView> {
-
   @override
   void initState() {
     super.initState();
     // with this initState our page shows up 3 seconds and then will be closed
-    Future.delayed(const Duration(seconds: 3), () {
-      Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => const MainPage(),));
-      // 'push' just skips the current page but 'pushReplacement' deletes and skips the current page
-    },);
+    Future.delayed(
+      const Duration(seconds: 3),
+      () {
+        Navigator.pushReplacement(
+            context,
+            MaterialPageRoute(
+              builder: (context) => const MainPage(),
+            ));
+        // 'push' just skips the current page but 'pushReplacement' deletes and skips the current page
+      },
+    );
   }
 
   @override
@@ -30,7 +36,8 @@ class _TemporaryPageViewState extends State<TemporaryPageView> {
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         elevation: 0,
-        systemOverlayStyle: SystemUiOverlayStyle.light, // if we do not this then appBAr will disappear
+        systemOverlayStyle: SystemUiOverlayStyle
+            .light, // if we do not this then appBar will disappear
       ),
       body: SafeArea(
         child: Center(
@@ -40,7 +47,10 @@ class _TemporaryPageViewState extends State<TemporaryPageView> {
                 padding: const EdgeInsets.symmetric(vertical: 175),
                 child: Image.asset("assets/logo/wordy_logo.png"),
               ),
-              const TextUtility(txt: "wordy", color: ColorsUtility.trinidad, size: SizesUtility.mainSize),
+              const TextUtility(
+                  txt: "wordy",
+                  color: ColorsUtility.trinidad,
+                  size: SizesUtility.mainSize),
             ],
           ),
         ),
