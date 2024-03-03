@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:wordy/features/main_page.dart';
-import 'package:wordy/project_utilities/colors_utility.dart';
-import 'package:wordy/project_utilities/sizes_utility.dart';
-import 'package:wordy/project_utilities/text_utility.dart';
+
+import '../features/project_utilities/colors_utility.dart';
+import '../features/project_utilities/sizes_utility.dart';
+import '../features/project_utilities/text_utility.dart';
+import 'main_page.dart';
 
 class TemporaryPageView extends StatefulWidget {
   const TemporaryPageView({super.key});

@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:wordy/features/drawer.dart';
-import 'package:wordy/features/my_lists_page.dart';
-import 'package:wordy/project_utilities/colors_utility.dart';
-import 'package:wordy/project_utilities/sizes_utility.dart';
-import 'package:wordy/project_utilities/text_utility.dart';
+
+import '../features/custom_widgets/custom_app_bar.dart';
+import '../features/project_utilities/colors_utility.dart';
+import '../features/project_utilities/sizes_utility.dart';
+import '../features/project_utilities/text_utility.dart';
+import 'drawer.dart';
+import 'my_lists_page.dart';
 
 class MainPage extends StatefulWidget {
   const MainPage({super.key});
@@ -16,16 +18,9 @@ class _MainPageState extends State<MainPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: ColorsUtility.daintree,
-        elevation: 0,
-        title: const TextUtility(
-            txt: 'wordy',
-            color: ColorsUtility.trinidad,
-            size: SizesUtility.titleSize),
-        centerTitle: true,
-        iconTheme: const IconThemeData(
-            color: ColorsUtility.trinidad, size: SizesUtility.iconSize),
+      appBar: CustomAppBar(
+        context: context,
+        title: 'wordy',
       ),
       drawer: const DrawerPageView(),
       body: SafeArea(
@@ -35,31 +30,6 @@ class _MainPageState extends State<MainPage> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
-              // Padding(
-              //   padding: EdgeInsets.only(left: MediaQuery.of(context).size.width / 4),
-              //   child: listTileWithRadioButton(
-              //       gVal: _chooseLanguage,
-              //       val: Languages.eng,
-              //       txt: 'English',
-              //   ),
-              // ),
-              // Padding(
-              //   padding: EdgeInsets.only(left: MediaQuery.of(context).size.width / 4),
-              //   child: listTileWithRadioButton(
-              //     gVal: _chooseLanguage,
-              //     val: Languages.tr,
-              //     txt: 'Turkish',),
-              // ),
-              // ElevatedButton(
-              //   style: ElevatedButton.styleFrom(
-              //       backgroundColor: ColorsUtility.ghostWhite,
-              //       shape: const RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(25)))),
-              //   onPressed: () {},
-              //   child: Padding(
-              //     padding: const EdgeInsets.only(top:20, bottom: 20, right: 40, left: 40),
-              //     child: Text('My Lists', style: Theme.of(context).textTheme.headlineMedium),
-              // ),),
-              // Center(child: mainPageCard(context)),
               GestureDetector(
                 onTap: () => Navigator.push(
                     context,

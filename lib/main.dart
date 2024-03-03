@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-
-import 'features/temporary_page_view.dart';
+import 'package:wordy/project_pages/temporary_page_view.dart';
 
 void main() {
   runApp(const MyApp());

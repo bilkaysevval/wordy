@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:wordy/features/create_list_page.dart';
 
-import '../project_utilities/colors_utility.dart';
-import '../project_utilities/sizes_utility.dart';
-import '../project_utilities/text_utility.dart';
+import '../features/custom_widgets/custom_app_bar.dart';
+import '../features/project_utilities/colors_utility.dart';
+import 'create_list_page.dart';
 
 class MyListsPage extends StatefulWidget {
   const MyListsPage({super.key});
@@ -16,26 +15,9 @@ class _MyListsPageState extends State<MyListsPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: ColorsUtility.daintree,
-        elevation: 0,
-        title: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            const TextUtility(
-                txt: 'My Lists',
-                color: ColorsUtility.trinidad,
-                size: SizesUtility.titleSize),
-            SizedBox(
-              height: MediaQuery.of(context).size.height,
-              width: MediaQuery.of(context).size.width * 0.2,
-              child: Image.asset('assets/logo/wordy_logo.png'),
-            ),
-          ],
-        ),
-        centerTitle: true,
-        iconTheme: const IconThemeData(
-            color: ColorsUtility.trinidad, size: SizesUtility.iconSize),
+      appBar: CustomAppBar(
+        context: context,
+        title: 'My Lists',
       ),
       floatingActionButton: FloatingActionButton(
         backgroundColor: ColorsUtility.trinidad,
