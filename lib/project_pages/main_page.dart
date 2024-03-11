@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../features/custom_widgets/custom_app_bar.dart';
+import '../features/customs/custom_app_bar.dart';
 import '../features/project_utilities/colors_utility.dart';
 import '../features/project_utilities/sizes_utility.dart';
 import '../features/project_utilities/text_utility.dart';

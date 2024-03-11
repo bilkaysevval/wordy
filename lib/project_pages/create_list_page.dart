@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:wordy/features/customs/custom_toast_message.dart';
 
-import '../features/custom_widgets/custom_app_bar.dart';
+import '../database/db/db.dart';
+import '../database/models/my_lists_model.dart';
+import '../database/models/words_model.dart';
+import '../features/customs/custom_app_bar.dart';
 import '../features/project_utilities/colors_utility.dart';
 import '../features/project_utilities/sizes_utility.dart';
 import '../features/project_utilities/text_utility.dart';
@@ -107,28 +111,64 @@ class _CreateListPageState extends State<CreateListPage> {
 
   void deleteRow() {
     if (rowsList.length > 2) {
+      // rowsList.length != 2
       controllerList.removeAt(controllerList.length - 1);
       controllerList.removeAt(controllerList.length - 1);
       rowsList.removeAt(rowsList.length - 1);
       setState(() => rowsList);
     } else {
-      showDialog(
-        context: context,
-        builder: (context) {
-          return const _CustomAlertDialog();
-        },
-      );
+      customToastMsg('must be at least 2 pair in list');
     }
   }
 
-  void saveList() {
+  void saveList() async {
+    int counter = 0;
+    bool notEmptyFair = true;
+
     for (int i = 0; i < controllerList.length / 2; i++) {
       String eng = controllerList[2 * i].text;
       String tr = controllerList[2 * i + 1].text;
-      if (!eng.isEmpty || !tr.isEmpty) {
-        debugPrint(eng + " " + tr);
-      } else
+      if (eng.isNotEmpty && tr.isNotEmpty) {
+        counter++;
+      } else {
+        notEmptyFair = false;
+      }
+    }
+
+    if (counter < 2) {
+      customToastMsg('min 2 pair must be filled');
+    } else {
+      if (!notEmptyFair) {
+        customToastMsg('fill or delete empty fields');
+      } else {
+        if (listNameController.text.isEmpty) {
+          customToastMsg('fill the list name');
+        } else {
+          MyLists addedList =
+              await DB.instance.addList(MyLists(name: listNameController.text));
+          for (int i = 0; i < controllerList.length / 2; i++) {
+            String eng = controllerList[2 * i].text;
+            String tr = controllerList[2 * i + 1].text;
+
+            Word word = await DB.instance.addWord(Word(
+                list_id: addedList.id,
+                word_eng: eng,
+                word_tr: tr,
+                status: false));
+          }
+          customToastMsg("list created");
+        }
+      }
+    }
+
+    for (int i = 0; i < controllerList.length / 2; i++) {
+      String eng = controllerList[2 * i].text;
+      String tr = controllerList[2 * i + 1].text;
+      if (eng.isNotEmpty || tr.isNotEmpty) {
+        debugPrint("$eng $tr");
+      } else {
         debugPrint("bos");
+      }
     }
   }
 

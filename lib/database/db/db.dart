@@ -31,21 +31,20 @@ class DB {
     final textType = 'TEXT NOT NULL';
 
     await db.execute('''
-    CREATE TABLE IF NOT EXISTS $myListsTableName(
-      ${MyListsTableFields.id} $idType,
-      ${MyListsTableFields.name} $textType,
+    CREATE TABLE IF NOT EXISTS $myListsTableName (
+    ${MyListsTableFields.id} $idType,
+    ${MyListsTableFields.name} $textType  // if you put ',' in here then you get error about sql
     )
     ''');
 
     await db.execute('''
-    CREATE TABLE IF NOT EXISTS $wordsTableName(
-      ${WordsTableFields.id} $idType,
-      ${WordsTableFields.list_id} $integerType,
-      ${WordsTableFields.word_eng} $textType,
-      ${WordsTableFields.word_tr} $textType,
-      ${WordsTableFields.status} $boolType,
-      FOREIGN KEY (${WordsTableFields.list_id}) REFERENCES $myListsTableName (${MyListsTableFields.id})  
-    )
+    CREATE TABLE IF NOT EXISTS $wordsTableName (
+    ${WordsTableFields.id} $idType,
+    ${WordsTableFields.list_id} $integerType,
+    ${WordsTableFields.word_eng} $textType,
+    ${WordsTableFields.word_tr} $textType,
+    ${WordsTableFields.status} $boolType,
+    FOREIGN KEY(${WordsTableFields.list_id}) REFERENCES $myListsTableName (${MyListsTableFields.id}))
     ''');
   }
 
