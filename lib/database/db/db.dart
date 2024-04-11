@@ -14,8 +14,8 @@ class DB {
   DB._init();
 
   Future<Database> get database async {
-    if (_database != null) return _database!;
-    _database = await _initDB('wordy.db');
+    if (_database != null) return _database!; // if it is created, retyrn
+    _database = await _initDB('wordy.db'); // if it is not created, create it
     return _database!;
   }
 
@@ -73,11 +73,27 @@ class DB {
         .toList(); // words comes in type of json. we mapped this words by converting to list from json
   } // in this block; we can access the words by 'where' clause. return words where WordsTableFields.list_id is equal to listID which we sent by parameter
 
-  Future<List<MyLists>> getAllLists() async {
+  Future<List<Map<String, Object?>>> getAllLists() async {
     final db = await instance.database;
-    final orderBy = '${MyListsTableFields.id} ASC';
-    final result = await db.query(myListsTableName, orderBy: orderBy);
-    return result.map((json) => MyLists.fromJson(json)).toList();
+
+    List<Map<String, Object?>> res = [];
+    List<Map<String, Object?>> lists =
+        await db.rawQuery("SELECT id, name FROM my_lists");
+
+    await Future.forEach(lists, (element) async {
+      var wordInfoByList = await db.rawQuery(
+          "SELECT(SELECT COUNT(*) FROM words WHERE id = ${element['id']}) as sum_word,"
+          "(SELECT COUNT(*) FROM words WHERE status = 0 and id = ${element['id']}) as sum_unlearned"); // we get num of words
+      Map<String, Object?> tempMap = Map.of(wordInfoByList[0]);
+      print(wordInfoByList);
+      tempMap["name"] = element["name"];
+      tempMap["id"] = element["id"];
+      res.add(tempMap);
+    });
+    print(res);
+    // final orderBy = '${MyListsTableFields.id} ASC';
+    // final result = await db.query(myListsTableName, orderBy: orderBy);
+    return res;
   }
 
   Future<int> updateWord(Word word) async {

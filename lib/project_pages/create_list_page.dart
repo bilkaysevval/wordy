@@ -128,7 +128,7 @@ class _CreateListPageState extends State<CreateListPage> {
     for (int i = 0; i < controllerList.length / 2; i++) {
       String eng = controllerList[2 * i].text;
       String tr = controllerList[2 * i + 1].text;
-      if (eng.isNotEmpty && tr.isNotEmpty) {
+      if (eng.trim().isNotEmpty && tr.trim().isNotEmpty) {
         counter++;
       } else {
         notEmptyFair = false;
@@ -141,7 +141,7 @@ class _CreateListPageState extends State<CreateListPage> {
       if (!notEmptyFair) {
         customToastMsg('fill or delete empty fields');
       } else {
-        if (listNameController.text.isEmpty) {
+        if (listNameController.text.trim().isEmpty) {
           customToastMsg('fill the list name');
         } else {
           MyLists addedList =
@@ -157,6 +157,11 @@ class _CreateListPageState extends State<CreateListPage> {
                 status: false));
           }
           customToastMsg("list created");
+          // Navigator.pushReplacement(
+          //     context,
+          //     MaterialPageRoute(
+          //       builder: (context) => const MyListsPage(),
+          //     ));
         }
       }
     }
