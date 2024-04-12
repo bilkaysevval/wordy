@@ -85,14 +85,11 @@ class DB {
           "SELECT(SELECT COUNT(*) FROM words WHERE id = ${element['id']}) as sum_word,"
           "(SELECT COUNT(*) FROM words WHERE status = 0 and id = ${element['id']}) as sum_unlearned"); // we get num of words
       Map<String, Object?> tempMap = Map.of(wordInfoByList[0]);
-      print(wordInfoByList);
+      print("from database: $wordInfoByList");
       tempMap["name"] = element["name"];
       tempMap["id"] = element["id"];
       res.add(tempMap);
     });
-    print(res);
-    // final orderBy = '${MyListsTableFields.id} ASC';
-    // final result = await db.query(myListsTableName, orderBy: orderBy);
     return res;
   }
 
@@ -113,6 +110,13 @@ class DB {
   Future<int> deleteWord(int id) async {
     final db = await instance.database;
     return db.delete(wordsTableName,
+        where: '${WordsTableFields.id} = ?', whereArgs: [id]);
+  }
+
+  Future<int> markAs(bool mark, int id) async {
+    final db = await instance.database;
+    int result = mark == true ? 1 : 0;
+    return db.update(wordsTableName, {WordsTableFields.status: result},
         where: '${WordsTableFields.id} = ?', whereArgs: [id]);
   }
 
