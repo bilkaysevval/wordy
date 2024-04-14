@@ -52,6 +52,7 @@ class _CreateListPageState extends State<CreateListPage> {
         appBar: CustomAppBar(
           title: 'List 1',
           context: context,
+          actionType: ActionType.logo,
         ),
         body: SafeArea(
           child: Container(

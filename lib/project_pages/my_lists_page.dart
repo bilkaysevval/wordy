@@ -33,7 +33,6 @@ class _MyListsPageState extends State<MyListsPage> {
     setState(() {
       _allLists;
     });
-    print("from get listts: $_allLists");
   }
 
   void deleteLists() async {
@@ -71,9 +70,7 @@ class _MyListsPageState extends State<MyListsPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: CustomAppBar(
-        context: context,
-        title: 'My Lists',
-      ),
+          context: context, title: 'My Lists', actionType: ActionType.logo),
       floatingActionButton: FloatingActionButton(
         backgroundColor: ColorsUtility.trinidad,
         onPressed: () {
@@ -180,8 +177,6 @@ class _CustomListItemState extends State<_CustomListItem> {
     if (widget.sumUnlearned != null) {
       sumUnlearned = int.parse(widget.sumUnlearned!);
     }
-    print(
-        "from card: Words: ${widget.sumWords} Learned: ${(widget.sumWords! - sumUnlearned)} Unlearned: ${widget.sumUnlearned}");
     return Card(
       color: ColorsUtility.puertoRico,
       child: ListTile(

@@ -19,9 +19,7 @@ class _MainPageState extends State<MainPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: CustomAppBar(
-        context: context,
-        title: 'wordy',
-      ),
+          context: context, title: 'wordy', actionType: ActionType.logo),
       drawer: const DrawerPageView(),
       body: SafeArea(
         child: Container(

@@ -4,6 +4,7 @@ import 'package:wordy/features/customs/custom_toast_message.dart';
 import '../database/db/db.dart';
 import '../database/models/words_model.dart';
 import '../features/customs/custom_app_bar.dart';
+import '../features/customs/popup_menu.dart';
 import '../features/project_utilities/colors_utility.dart';
 
 class WordsPage extends StatefulWidget {
@@ -39,31 +40,39 @@ class _WordsPageState extends State<WordsPage> {
     });
   }
 
+  void deleteWords() async {
+    List<int> removeIndexList = [];
+    for (int i = 0; i < _wordsList.length; i++) {
+      if (deleteIndexList[i]) removeIndexList.add(i);
+    }
+    for (int i = removeIndexList.length - 1; i >= 0; i--) {
+      DB.instance.deleteWord(
+          _wordsList[removeIndexList[i]].id!); // this part is different
+      _wordsList.removeAt(removeIndexList[i]);
+      deleteIndexList.removeAt(removeIndexList[i]);
+    }
+    for (int i = 0; i < deleteIndexList.length; i++) {
+      deleteIndexList[i] = false;
+    }
+    setState(() {
+      _wordsList;
+      deleteIndexList;
+      pressController = false;
+      customToastMsg("selected words have been deleted");
+    });
+  } // same as deleteLists() method in my lists page
+
   void updatePressController(bool update) {
     setState(() {
       pressController = update;
     });
   }
 
-  // void deleteWords() async {
-  //   for (int i = removeIndexList.length - 1; i >= 0; i--) {
-  //     DB.instance.deleteWord(
-  //         _wordsList[removeIndexList[i]].id!); // this part is different
-  //     _wordsList.removeAt(removeIndexList[i]);
-  //     deleteIndexList.removeAt(removeIndexList[i]);
-  //   }
-  //   setState(() {
-  //     _wordsList;
-  //   });
-  // } // same as deleteLists() method in my lists page
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: CustomAppBar(
-        context: context,
-        title: listName!,
-      ),
+          context: context, title: listName!, actionType: ActionType.popupMenu),
       body: SafeArea(
         child: Container(
           color: ColorsUtility.daintree,
@@ -87,6 +96,7 @@ class _WordsPageState extends State<WordsPage> {
                   itemCount: _wordsList.length,
                 ),
               ),
+              const CustomPopupMenu(),
               if (pressController)
                 Container(
                   margin: const EdgeInsets.symmetric(vertical: 5),
@@ -101,7 +111,9 @@ class _WordsPageState extends State<WordsPage> {
                           padding: const EdgeInsets.symmetric(horizontal: 30),
                         ),
                         onPressed: () {
-                          // deleteList();  --------------------------------------------------------
+                          setState(() {
+                            deleteWords();
+                          });
                         },
                         child: const Text('Delete'),
                       ),
@@ -112,7 +124,12 @@ class _WordsPageState extends State<WordsPage> {
                           foregroundColor: ColorsUtility.daintree,
                           padding: const EdgeInsets.symmetric(horizontal: 30),
                         ),
-                        onPressed: () {},
+                        onPressed: () {
+                          setState(() {
+                            updatePressController(!pressController);
+                            pressController = false;
+                          });
+                        },
                         child: const Text('Cancel'),
                       ),
                     ],
@@ -178,8 +195,9 @@ class _CustomWordItemState extends State<_CustomWordItem> {
       child: ListTile(
         onLongPress: () {
           setState(() {
-            pressController = !pressController!;
-            deleteIndexList[index] = true;
+            updatePressController(!pressController!);
+            pressController =
+                !pressController!; // shows the checkbox on trailing
           });
         },
         contentPadding: const EdgeInsets.symmetric(vertical: 5, horizontal: 10),
@@ -211,7 +229,7 @@ class _CustomWordItemState extends State<_CustomWordItem> {
                 checkColor: ColorsUtility.sorbus,
                 activeColor: ColorsUtility.matisse,
                 hoverColor: ColorsUtility.daintree,
-                value: status,
+                value: deleteIndexList[index],
                 onChanged: (bool? value) {
                   setState(() {
                     deleteIndexList[index] = value!;
@@ -221,6 +239,7 @@ class _CustomWordItemState extends State<_CustomWordItem> {
                     }
                     if (!checkboxController) {
                       updatePressController(!pressController!);
+                      pressController = false;
                     }
                   });
                 },
