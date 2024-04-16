@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:wordy/project_pages/word_cards_page.dart';
 
 import '../features/customs/custom_app_bar.dart';
 import '../features/project_utilities/colors_utility.dart';
@@ -40,10 +41,17 @@ class _MainPageState extends State<MainPage> {
                   color2: ColorsUtility.sorbus,
                 ),
               ),
-              const _CustomCard(
-                text: 'My Cards',
-                color1: ColorsUtility.trinidad,
-                color2: ColorsUtility.sorbus,
+              GestureDetector(
+                onTap: () => Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const WordCardsPage(),
+                    )),
+                child: const _CustomCard(
+                  text: 'My Cards',
+                  color1: ColorsUtility.trinidad,
+                  color2: ColorsUtility.sorbus,
+                ),
               ),
               const _CustomCard(
                 text: 'Try Me!',
