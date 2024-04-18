@@ -93,6 +93,34 @@ class DB {
     return res;
   }
 
+  Future<List<Word>> getWordsOfListsByStatus(
+      List<int> listsID, bool? status) async {
+    final db = await instance.database;
+    String IDList = "";
+    for (int i = 0; i < listsID.length; i++) {
+      if (i == listsID.length - 1) {
+        IDList += ("${listsID[i]}");
+      } else {
+        IDList += ("${listsID[i]},");
+      }
+    }
+
+    List<Map<String, Object?>> res;
+
+    if (status != null) {
+      String query =
+          'SELECT * FROM words WHERE id IN($IDList) and status = ${status ? "1" : "0"}';
+      print("SQL Query: $query");
+      res = await db.rawQuery(query);
+    } else {
+      String query = 'SELECT * FROM words WHERE id IN($IDList)';
+      print("SQL Query: $query");
+      res = await db.rawQuery(query);
+    }
+    print(res);
+    return res.map((json) => Word.fromJson(json)).toList();
+  }
+
   Future<int> updateWord(Word word) async {
     final db = await instance.database;
     return db.update(wordsTableName,
