@@ -5,9 +5,9 @@ import '../database/db/db.dart';
 import '../database/models/my_lists_model.dart';
 import '../database/models/words_model.dart';
 import '../features/customs/custom_app_bar.dart';
+import '../features/customs/custom_text_widget.dart';
 import '../features/project_utilities/colors_utility.dart';
 import '../features/project_utilities/sizes_utility.dart';
-import '../features/project_utilities/text_utility.dart';
 
 class CreateListPage extends StatefulWidget {
   const CreateListPage({super.key});
@@ -55,55 +55,47 @@ class _CreateListPageState extends State<CreateListPage> {
           actionType: ActionType.logo,
         ),
         body: SafeArea(
-          child: Container(
-            color: ColorsUtility.daintree,
-            child: Column(
-              children: [
-                _CustomTextField(
-                  controller: listNameController,
-                  icon: const Icon(
-                    Icons.format_list_bulleted_outlined,
-                    color: ColorsUtility.daintree,
+          child: Column(
+            children: [
+              _CustomTextField(
+                controller: listNameController,
+                icon: const Icon(
+                  Icons.format_list_bulleted_outlined,
+                  color: ColorsUtility.rhino,
+                ),
+                hintText: 'List Name',
+              ),
+              const Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                  TextUtility(
+                      txt: 'English',
+                      color: ColorsUtility.rhino,
+                      size: SizesUtility.defaultSize),
+                  TextUtility(
+                      txt: 'Turkish',
+                      color: ColorsUtility.rhino,
+                      size: SizesUtility.defaultSize),
+                ],
+              ),
+              Expanded(
+                child: ListView.builder(
+                  itemCount: rowsList.length,
+                  itemBuilder: (BuildContext context, int index) {
+                    return rowsList[index];
+                  },
+                ),
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  _CustomButton(
+                    icon: Icons.delete_outline,
+                    action: deleteRow,
                   ),
-                  hintText: 'List Name',
-                ),
-                const Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: [
-                    TextUtility(
-                        txt: 'English',
-                        color: ColorsUtility.puertoRico,
-                        size: SizesUtility.defaultSize),
-                    TextUtility(
-                        txt: 'Turkish',
-                        color: ColorsUtility.puertoRico,
-                        size: SizesUtility.defaultSize),
-                  ],
-                ),
-                Expanded(
-                  child: ListView.builder(
-                    itemCount: rowsList.length,
-                    itemBuilder: (BuildContext context, int index) {
-                      return rowsList[index];
-                    },
-                  ),
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    _CustomButton(
-                      icon: Icons.delete_outline,
-                      action: deleteRow,
-                    ),
-                    _CustomButton(icon: Icons.add, action: addRow),
-                    _CustomButton(
-                      icon: Icons.save_outlined,
-                      action: saveList,
-                    ),
-                  ],
-                ),
-              ],
-            ),
+                ],
+              ),
+            ],
           ),
         ),
       ),
@@ -208,7 +200,7 @@ class _CustomTextField extends StatelessWidget {
       margin: const EdgeInsets.all(10),
       padding: const EdgeInsets.symmetric(horizontal: 10),
       decoration: BoxDecoration(
-        color: ColorsUtility.puertoRico,
+        color: ColorsUtility.spindle,
         borderRadius: BorderRadius.circular(5),
       ),
       child: SizedBox(
@@ -247,13 +239,13 @@ class _CustomButtonState extends State<_CustomButton> {
   Widget build(BuildContext context) {
     return FloatingActionButton(
       mini: true,
-      backgroundColor: ColorsUtility.trinidad,
+      backgroundColor: ColorsUtility.mandy,
       onPressed: () {
         widget.action();
       },
       child: Icon(
         widget.icon,
-        color: ColorsUtility.daintree,
+        color: ColorsUtility.chinaIvory,
       ),
     );
   }
@@ -265,9 +257,9 @@ class _CustomAlertDialog extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
-      backgroundColor: ColorsUtility.sorbus,
+      backgroundColor: ColorsUtility.chinaIvory,
       title: const TextUtility(
-        color: ColorsUtility.daintree,
+        color: ColorsUtility.rhino,
         size: SizesUtility.defaultSize,
         txt: 'There must be at least two words in list!',
       ),
@@ -278,7 +270,7 @@ class _CustomAlertDialog extends StatelessWidget {
             },
             child: const TextUtility(
                 txt: 'Close',
-                color: ColorsUtility.daintree,
+                color: ColorsUtility.rhino,
                 size: SizesUtility.defaultSize)),
       ],
     );

@@ -7,7 +7,7 @@ void customToastMsg(String msg) {
       msg: msg,
       toastLength: Toast.LENGTH_SHORT,
       gravity: ToastGravity.SNACKBAR,
-      backgroundColor: ColorsUtility.sorbus,
-      textColor: ColorsUtility.daintree,
+      backgroundColor: ColorsUtility.mandy,
+      textColor: ColorsUtility.rhino,
       fontSize: 16);
 }

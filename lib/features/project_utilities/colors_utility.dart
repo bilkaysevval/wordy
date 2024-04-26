@@ -23,14 +23,21 @@ import 'package:flutter/material.dart';
 //   static const Color default = Color.fromRGBO(1, 32, 48, 1);
 // }
 
-class ColorsUtility {
-  static const Color trinidad = Color.fromRGBO(242, 68, 5, 1);
-  static const Color sorbus = Color.fromRGBO(250, 127, 8, 1);
-  static const Color puertoRico = Color.fromRGBO(69, 196, 176, 1);
-  static const Color matisse = Color.fromRGBO(19, 103, 138, 1);
-  static const Color daintree = Color.fromRGBO(1, 32, 48, 1);
-}
+// class ColorsUtility {
+//   static const Color trinidad = Color.fromRGBO(242, 68, 5, 1);
+//   static const Color sorbus = Color.fromRGBO(250, 127, 8, 1);
+//   static const Color puertoRico = Color.fromRGBO(69, 196, 176, 1);
+//   static const Color matisse = Color.fromRGBO(19, 103, 138, 1);
+//   static const Color daintree = Color.fromRGBO(1, 32, 48, 1);
+// }
 
+class ColorsUtility {
+  static const Color mandy = Color.fromRGBO(235, 69, 95, 1);
+  // static const Color sorbus = Color.fromRGBO(250, 127, 8, 1);
+  static const Color chinaIvory = Color.fromRGBO(252, 255, 231, 1);
+  static const Color spindle = Color.fromRGBO(186, 215, 233, 1);
+  static const Color rhino = Color.fromRGBO(43, 52, 103, 1);
+}
 // class ColorsUtility {
 //   // static const Color smokyTopaz = Color.fromRGBO(218, 253, 5, 1);
 //   static const Color smokyTopaz = Color.fromRGBO(218, 253, 186, 1);

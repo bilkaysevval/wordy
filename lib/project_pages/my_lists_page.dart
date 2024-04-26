@@ -72,7 +72,7 @@ class _MyListsPageState extends State<MyListsPage> {
       appBar: CustomAppBar(
           context: context, title: 'My Lists', actionType: ActionType.logo),
       floatingActionButton: FloatingActionButton(
-        backgroundColor: ColorsUtility.trinidad,
+        backgroundColor: ColorsUtility.mandy,
         onPressed: () {
           Navigator.push(
               context,
@@ -80,11 +80,11 @@ class _MyListsPageState extends State<MyListsPage> {
                 builder: (context) => const CreateListPage(),
               ));
         },
-        child: const Icon(Icons.add, color: ColorsUtility.daintree),
+        child: const Icon(Icons.add, color: ColorsUtility.rhino),
       ),
       body: SafeArea(
         child: Container(
-            color: ColorsUtility.daintree,
+            color: ColorsUtility.rhino,
             child: Column(
               children: [
                 Expanded(
@@ -114,9 +114,9 @@ class _MyListsPageState extends State<MyListsPage> {
                       children: [
                         TextButton(
                           style: TextButton.styleFrom(
-                            backgroundColor: ColorsUtility.trinidad,
+                            backgroundColor: ColorsUtility.mandy,
                             elevation: 10,
-                            foregroundColor: ColorsUtility.daintree,
+                            foregroundColor: ColorsUtility.rhino,
                             padding: const EdgeInsets.symmetric(horizontal: 30),
                           ),
                           onPressed: () {
@@ -126,9 +126,9 @@ class _MyListsPageState extends State<MyListsPage> {
                         ),
                         TextButton(
                           style: TextButton.styleFrom(
-                            backgroundColor: ColorsUtility.trinidad,
+                            backgroundColor: ColorsUtility.mandy,
                             elevation: 10,
-                            foregroundColor: ColorsUtility.daintree,
+                            foregroundColor: ColorsUtility.rhino,
                             padding: const EdgeInsets.symmetric(horizontal: 30),
                           ),
                           onPressed: () {},
@@ -178,7 +178,7 @@ class _CustomListItemState extends State<_CustomListItem> {
       sumUnlearned = int.parse(widget.sumUnlearned!);
     }
     return Card(
-      color: ColorsUtility.puertoRico,
+      color: ColorsUtility.chinaIvory,
       child: ListTile(
         onTap: () {
           Navigator.push(
@@ -205,9 +205,9 @@ class _CustomListItemState extends State<_CustomListItem> {
         ),
         trailing: widget.pressController
             ? Checkbox(
-                checkColor: ColorsUtility.sorbus,
-                activeColor: ColorsUtility.matisse,
-                hoverColor: ColorsUtility.daintree,
+                checkColor: ColorsUtility.mandy,
+                activeColor: ColorsUtility.spindle,
+                hoverColor: ColorsUtility.rhino,
                 value: widget.deleteIndexList[widget.index],
                 onChanged: (bool? value) {
                   setState(() {

@@ -13,7 +13,7 @@ class TextUtility extends StatelessWidget {
   Widget build(BuildContext context) {
     return Text(txt,
         style: TextStyle(
-          color: color ?? ColorsUtility.daintree,
+          color: color ?? ColorsUtility.rhino,
           fontSize: size ?? SizesUtility.defaultSize,
           fontWeight: FontWeight.w500,
         ));

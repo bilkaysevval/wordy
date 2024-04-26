@@ -4,7 +4,7 @@ import 'package:wordy/features/customs/custom_toast_message.dart';
 import '../database/db/db.dart';
 import '../database/models/words_model.dart';
 import '../features/customs/custom_app_bar.dart';
-import '../features/customs/popup_menu.dart';
+import '../features/customs/custom_popup_menu.dart';
 import '../features/project_utilities/colors_utility.dart';
 
 class WordsPage extends StatefulWidget {
@@ -75,7 +75,7 @@ class _WordsPageState extends State<WordsPage> {
           context: context, title: listName!, actionType: ActionType.popupMenu),
       body: SafeArea(
         child: Container(
-          color: ColorsUtility.daintree,
+          color: ColorsUtility.rhino,
           child: Column(
             children: [
               Expanded(
@@ -105,9 +105,9 @@ class _WordsPageState extends State<WordsPage> {
                     children: [
                       TextButton(
                         style: TextButton.styleFrom(
-                          backgroundColor: ColorsUtility.trinidad,
+                          backgroundColor: ColorsUtility.mandy,
                           elevation: 10,
-                          foregroundColor: ColorsUtility.daintree,
+                          foregroundColor: ColorsUtility.rhino,
                           padding: const EdgeInsets.symmetric(horizontal: 30),
                         ),
                         onPressed: () {
@@ -119,9 +119,9 @@ class _WordsPageState extends State<WordsPage> {
                       ),
                       TextButton(
                         style: TextButton.styleFrom(
-                          backgroundColor: ColorsUtility.trinidad,
+                          backgroundColor: ColorsUtility.mandy,
                           elevation: 10,
-                          foregroundColor: ColorsUtility.daintree,
+                          foregroundColor: ColorsUtility.rhino,
                           padding: const EdgeInsets.symmetric(horizontal: 30),
                         ),
                         onPressed: () {
@@ -191,7 +191,7 @@ class _CustomWordItemState extends State<_CustomWordItem> {
   @override
   Widget build(BuildContext context) {
     return Card(
-      color: ColorsUtility.puertoRico,
+      color: ColorsUtility.chinaIvory,
       child: ListTile(
         onLongPress: () {
           setState(() {
@@ -203,9 +203,9 @@ class _CustomWordItemState extends State<_CustomWordItem> {
         contentPadding: const EdgeInsets.symmetric(vertical: 5, horizontal: 10),
         leading: !pressController!
             ? Checkbox(
-                checkColor: ColorsUtility.sorbus,
-                activeColor: ColorsUtility.matisse,
-                hoverColor: ColorsUtility.daintree,
+                checkColor: ColorsUtility.mandy,
+                activeColor: ColorsUtility.spindle,
+                hoverColor: ColorsUtility.rhino,
                 value: status,
                 onChanged: (bool? value) {
                   setState(() {
@@ -226,9 +226,9 @@ class _CustomWordItemState extends State<_CustomWordItem> {
         subtitle: Text(wordTR!),
         trailing: pressController!
             ? Checkbox(
-                checkColor: ColorsUtility.sorbus,
-                activeColor: ColorsUtility.matisse,
-                hoverColor: ColorsUtility.daintree,
+                checkColor: ColorsUtility.mandy,
+                activeColor: ColorsUtility.spindle,
+                hoverColor: ColorsUtility.rhino,
                 value: deleteIndexList[index],
                 onChanged: (bool? value) {
                   setState(() {

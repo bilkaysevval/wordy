@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
+import '../features/customs/custom_text_widget.dart';
 import '../features/project_utilities/colors_utility.dart';
 import '../features/project_utilities/sizes_utility.dart';
-import '../features/project_utilities/text_utility.dart';
 
 class DrawerPageView extends StatefulWidget {
   const DrawerPageView({super.key});
@@ -15,7 +15,7 @@ class _DrawerPageViewState extends State<DrawerPageView> {
   @override
   Widget build(BuildContext context) {
     return Drawer(
-      backgroundColor: ColorsUtility.matisse,
+      backgroundColor: ColorsUtility.spindle,
       child: SafeArea(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -23,25 +23,25 @@ class _DrawerPageViewState extends State<DrawerPageView> {
             Image.asset('assets/logo/wordy_logo.png'),
             const TextUtility(
                 txt: 'WORDY',
-                color: ColorsUtility.sorbus,
+                color: ColorsUtility.mandy,
                 size: SizesUtility.mainSize),
             const TextUtility(
                 txt: 'Your funny vocabulary app :)',
-                color: ColorsUtility.daintree,
+                color: ColorsUtility.rhino,
                 size: SizesUtility.defaultSize),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 const TextUtility(
                     txt: 'for my github account',
-                    color: ColorsUtility.daintree,
+                    color: ColorsUtility.rhino,
                     size: SizesUtility.defaultSize),
                 TextButton(
                     onPressed:
                         () {}, // for using this click link we have to use url_launcher package
                     child: const TextUtility(
                       txt: 'click here!',
-                      color: ColorsUtility.trinidad,
+                      color: ColorsUtility.mandy,
                       size: SizesUtility.defaultSize,
                     )),
               ],
@@ -49,7 +49,7 @@ class _DrawerPageViewState extends State<DrawerPageView> {
             const TextUtility(
                 txt:
                     'Version', // for getting version of app we have to use package_info_plus package
-                color: ColorsUtility.sorbus,
+                color: ColorsUtility.mandy,
                 size: SizesUtility.defaultSize),
           ],
         ),

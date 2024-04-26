@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:wordy/project_pages/temporary_page_view.dart';
+import 'package:wordy/project_pages/navigation_bar.dart';
 
 void main() {
   runApp(const MyApp());
@@ -15,7 +15,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
           scaffoldBackgroundColor: const Color.fromRGBO(249, 249, 249, 1)),
-      home: const TemporaryPageView(),
+      home: const NavigationExample(),
     );
   }
 }

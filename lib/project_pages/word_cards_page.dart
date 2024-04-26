@@ -3,10 +3,10 @@ import 'package:wordy/features/customs/custom_app_bar.dart';
 import 'package:wordy/features/customs/custom_toast_message.dart';
 import 'package:wordy/features/project_utilities/colors_utility.dart';
 import 'package:wordy/features/project_utilities/sizes_utility.dart';
-import 'package:wordy/features/project_utilities/text_utility.dart';
 
 import '../database/db/db.dart';
 import '../database/models/words_model.dart';
+import '../features/customs/custom_text_widget.dart';
 
 class WordCardsPage extends StatefulWidget {
   const WordCardsPage({super.key});
@@ -85,7 +85,7 @@ class _WordCardsPageState extends State<WordCardsPage> {
                 const Divider(),
                 const TextUtility(
                     txt: 'lists',
-                    color: ColorsUtility.daintree,
+                    color: ColorsUtility.rhino,
                     size: SizesUtility.defaultSize),
                 Expanded(
                   child: Scrollbar(
@@ -133,7 +133,7 @@ class _WordCardsPageState extends State<WordCardsPage> {
                       },
                       child: const TextUtility(
                         txt: 'Start!',
-                        color: ColorsUtility.matisse,
+                        color: ColorsUtility.spindle,
                         size: SizesUtility.defaultSize,
                       )),
                 )
@@ -178,7 +178,7 @@ class _ListsToBeAskedState extends State<ListsToBeAsked> {
     return ListTile(
       title: TextUtility(
         txt: title!,
-        color: ColorsUtility.daintree,
+        color: ColorsUtility.rhino,
         size: SizesUtility.defaultSize,
       ),
       leading: SizedBox(
@@ -230,7 +230,7 @@ class _WhichRadioButtonState extends State<WhichRadioButton> {
     return ListTile(
       title: TextUtility(
         txt: widget.title,
-        color: ColorsUtility.daintree,
+        color: ColorsUtility.rhino,
         size: SizesUtility.defaultSize,
       ),
       leading: Radio<WhichOne>(

@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:wordy/project_pages/word_cards_page.dart';
 
 import '../features/customs/custom_app_bar.dart';
+import '../features/customs/custom_text_widget.dart';
 import '../features/project_utilities/colors_utility.dart';
 import '../features/project_utilities/sizes_utility.dart';
-import '../features/project_utilities/text_utility.dart';
 import 'drawer.dart';
 import 'my_lists_page.dart';
 
@@ -25,7 +25,7 @@ class _MainPageState extends State<MainPage> {
       body: SafeArea(
         child: Container(
           alignment: Alignment.center,
-          color: ColorsUtility.daintree,
+          color: ColorsUtility.rhino,
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
@@ -37,8 +37,8 @@ class _MainPageState extends State<MainPage> {
                     )),
                 child: const _CustomCard(
                   text: 'My Lists',
-                  color1: ColorsUtility.trinidad,
-                  color2: ColorsUtility.sorbus,
+                  color1: ColorsUtility.mandy,
+                  color2: ColorsUtility.mandy,
                 ),
               ),
               GestureDetector(
@@ -49,14 +49,14 @@ class _MainPageState extends State<MainPage> {
                     )),
                 child: const _CustomCard(
                   text: 'My Cards',
-                  color1: ColorsUtility.trinidad,
-                  color2: ColorsUtility.sorbus,
+                  color1: ColorsUtility.mandy,
+                  color2: ColorsUtility.mandy,
                 ),
               ),
               const _CustomCard(
                 text: 'Try Me!',
-                color1: ColorsUtility.trinidad,
-                color2: ColorsUtility.sorbus,
+                color1: ColorsUtility.mandy,
+                color2: ColorsUtility.mandy,
               ),
             ],
           ),
@@ -95,6 +95,6 @@ class _CustomCard extends StatelessWidget {
         child: TextUtility(
             txt: text,
             size: SizesUtility.titleSize,
-            color: ColorsUtility.daintree));
+            color: ColorsUtility.rhino));
   }
 }

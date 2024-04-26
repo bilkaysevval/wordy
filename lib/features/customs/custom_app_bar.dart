@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:wordy/features/customs/popup_menu.dart';
 
 import '../project_utilities/colors_utility.dart';
 import '../project_utilities/sizes_utility.dart';
-import '../project_utilities/text_utility.dart';
+import 'custom_popup_menu.dart';
+import 'custom_text_widget.dart';
 
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   const CustomAppBar(
@@ -22,15 +22,15 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
           actions: [
             CustomAppBarActionWithTwoParameters(actionType: actionType)
           ],
-          iconTheme: const IconThemeData(color: ColorsUtility.trinidad),
-          backgroundColor: ColorsUtility.daintree,
-          elevation: 10,
+          iconTheme: const IconThemeData(color: ColorsUtility.chinaIvory),
+          backgroundColor: ColorsUtility.rhino,
+          // elevation: 10,
           title: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               TextUtility(
                   txt: title,
-                  color: ColorsUtility.trinidad,
+                  color: ColorsUtility.chinaIvory,
                   size: SizesUtility.defaultSize),
               // SizedBox(
               //   height: MediaQuery.of(context).size.height,
