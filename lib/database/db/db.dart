@@ -33,7 +33,7 @@ class DB {
     await db.execute('''
     CREATE TABLE IF NOT EXISTS $myListsTableName (
     ${MyListsTableFields.id} $idType,
-    ${MyListsTableFields.name} $textType  // if you put ',' in here then you get error about sql
+    ${MyListsTableFields.name} $textType 
     )
     ''');
 

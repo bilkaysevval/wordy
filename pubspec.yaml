@@ -76,10 +76,10 @@ flutter:
   # "family" key with the font family name, and a "fonts" key with a
   # list giving the asset and other descriptors for the font. For
   # example:
-#  fonts:+
-#    - family: RutinaGrace
-#      fonts:
-#        - asset: assets/fonts/RutinaGrace.ttf
+  fonts:
+    - family: HelveticaProRoman
+      fonts:
+        - asset: assets/fonts/HelveticaProRoman.ttf
 #    - family: Indigo
 #      fonts:
 #        - asset: assets/fonts/Indigo.otf

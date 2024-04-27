@@ -15,7 +15,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
           scaffoldBackgroundColor: const Color.fromRGBO(249, 249, 249, 1)),
-      home: const NavigationExample(),
+      home: const BottomNavigationBarExample(),
     );
   }
 }

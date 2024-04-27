@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:wordy/features/customs/custom_toast_message.dart';
+import 'package:wordy/features/project_utilities/padding_and_margin_utility.dart';
 
 import '../database/db/db.dart';
 import '../database/models/my_lists_model.dart';
@@ -47,56 +48,112 @@ class _CreateListPageState extends State<CreateListPage> {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        appBar: CustomAppBar(
-          title: 'List 1',
+    return Scaffold(
+      appBar: CustomAppBar(
+          title: 'Create Your List',
           context: context,
-          actionType: ActionType.logo,
-        ),
-        body: SafeArea(
-          child: Column(
-            children: [
-              _CustomTextField(
-                controller: listNameController,
-                icon: const Icon(
-                  Icons.format_list_bulleted_outlined,
-                  color: ColorsUtility.rhino,
+          actionType: ActionType.logo),
+      body: SafeArea(
+        child: Column(
+          children: [
+            _CustomTextField(
+              controller: listNameController,
+              icon: const Icon(
+                Icons.format_list_bulleted_outlined,
+                color: ColorsUtility.rhino,
+              ),
+              hintText: 'List Name',
+            ),
+            const Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                CustomTextWidget(
+                    txt: 'English',
+                    color: ColorsUtility.rhino,
+                    size: SizesUtility.defaultSize),
+                CustomTextWidget(
+                    txt: 'Turkish',
+                    color: ColorsUtility.rhino,
+                    size: SizesUtility.defaultSize),
+              ],
+            ),
+            Expanded(
+              child: ListView.builder(
+                itemCount: rowsList.length,
+                itemBuilder: (BuildContext context, int index) {
+                  return rowsList[index];
+                },
+              ),
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Padding(
+                  padding: PaddingUtility.buttonPadding,
+                  child: IconButton.filled(
+                      style: ButtonStyle(
+                          elevation: const MaterialStatePropertyAll(5),
+                          shadowColor: const MaterialStatePropertyAll(
+                              ColorsUtility.mandy),
+                          iconSize: const MaterialStatePropertyAll(24),
+                          padding: const MaterialStatePropertyAll(
+                              PaddingUtility.buttonPadding),
+                          shape: MaterialStatePropertyAll(
+                              RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(5))),
+                          backgroundColor: const MaterialStatePropertyAll(
+                              ColorsUtility.mandy)),
+                      onPressed: addRow,
+                      icon: const Icon(Icons.add_outlined)),
                 ),
-                hintText: 'List Name',
-              ),
-              const Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: [
-                  TextUtility(
-                      txt: 'English',
-                      color: ColorsUtility.rhino,
-                      size: SizesUtility.defaultSize),
-                  TextUtility(
-                      txt: 'Turkish',
-                      color: ColorsUtility.rhino,
-                      size: SizesUtility.defaultSize),
-                ],
-              ),
-              Expanded(
-                child: ListView.builder(
-                  itemCount: rowsList.length,
-                  itemBuilder: (BuildContext context, int index) {
-                    return rowsList[index];
-                  },
+                Padding(
+                  padding: PaddingUtility.buttonPadding,
+                  child: IconButton.filled(
+                      style: ButtonStyle(
+                          elevation: const MaterialStatePropertyAll(5),
+                          shadowColor: const MaterialStatePropertyAll(
+                              ColorsUtility.mandy),
+                          iconSize: const MaterialStatePropertyAll(24),
+                          padding: const MaterialStatePropertyAll(
+                              PaddingUtility.buttonPadding),
+                          shape: MaterialStatePropertyAll(
+                              RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(5))),
+                          backgroundColor: const MaterialStatePropertyAll(
+                              ColorsUtility.mandy)),
+                      onPressed: saveList,
+                      icon: const Icon(Icons.save_outlined)),
                 ),
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  _CustomButton(
-                    icon: Icons.delete_outline,
-                    action: deleteRow,
-                  ),
-                ],
-              ),
-            ],
-          ),
+                Padding(
+                  padding: PaddingUtility.buttonPadding,
+                  child: IconButton.filled(
+                      style: ButtonStyle(
+                          elevation: const MaterialStatePropertyAll(5),
+                          shadowColor: const MaterialStatePropertyAll(
+                              ColorsUtility.mandy),
+                          iconSize: const MaterialStatePropertyAll(24),
+                          padding: const MaterialStatePropertyAll(
+                              PaddingUtility.buttonPadding),
+                          shape: MaterialStatePropertyAll(
+                              RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(5))),
+                          backgroundColor: const MaterialStatePropertyAll(
+                              ColorsUtility.mandy)),
+                      onPressed: deleteRow,
+                      icon: const Icon(Icons.remove_outlined)),
+                )
+              ],
+            ),
+            // Row(
+            //   mainAxisAlignment: MainAxisAlignment.center,
+            //   children: [
+            //     _CustomButton(
+            //       icon: Icons.delete_outline,
+            //       action: deleteRow,
+            //     ),
+            //   ],
+            // ),
+          ],
         ),
       ),
     );
@@ -222,34 +279,34 @@ class _CustomTextField extends StatelessWidget {
   }
 }
 
-class _CustomButton extends StatefulWidget {
-  final IconData icon;
-  final Function action;
-  const _CustomButton({
-    super.key,
-    required this.icon,
-    required this.action,
-  });
-  @override
-  State<_CustomButton> createState() => _CustomButtonState();
-}
-
-class _CustomButtonState extends State<_CustomButton> {
-  @override
-  Widget build(BuildContext context) {
-    return FloatingActionButton(
-      mini: true,
-      backgroundColor: ColorsUtility.mandy,
-      onPressed: () {
-        widget.action();
-      },
-      child: Icon(
-        widget.icon,
-        color: ColorsUtility.chinaIvory,
-      ),
-    );
-  }
-}
+// class _CustomButton extends StatefulWidget {
+//   final IconData icon;
+//   final Function action;
+//   const _CustomButton({
+//     super.key,
+//     required this.icon,
+//     required this.action,
+//   });
+//   @override
+//   State<_CustomButton> createState() => _CustomButtonState();
+// }
+//
+// class _CustomButtonState extends State<_CustomButton> {
+//   @override
+//   Widget build(BuildContext context) {
+//     return FloatingActionButton(
+//       mini: true,
+//       backgroundColor: ColorsUtility.mandy,
+//       onPressed: () {
+//         widget.action();
+//       },
+//       child: Icon(
+//         widget.icon,
+//         color: ColorsUtility.chinaIvory,
+//       ),
+//     );
+//   }
+// }
 
 class _CustomAlertDialog extends StatelessWidget {
   const _CustomAlertDialog({super.key});
@@ -257,8 +314,8 @@ class _CustomAlertDialog extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
-      backgroundColor: ColorsUtility.chinaIvory,
-      title: const TextUtility(
+      backgroundColor: ColorsUtility.spindle,
+      title: const CustomTextWidget(
         color: ColorsUtility.rhino,
         size: SizesUtility.defaultSize,
         txt: 'There must be at least two words in list!',
@@ -268,7 +325,7 @@ class _CustomAlertDialog extends StatelessWidget {
             onPressed: () {
               Navigator.pop(context);
             },
-            child: const TextUtility(
+            child: const CustomTextWidget(
                 txt: 'Close',
                 color: ColorsUtility.rhino,
                 size: SizesUtility.defaultSize)),

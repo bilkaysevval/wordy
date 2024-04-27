@@ -70,7 +70,10 @@ class _MyListsPageState extends State<MyListsPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: CustomAppBar(
-          context: context, title: 'My Lists', actionType: ActionType.logo),
+        context: context,
+        title: 'Your Lists',
+        actionType: ActionType.popupMenu,
+      ),
       floatingActionButton: FloatingActionButton(
         backgroundColor: ColorsUtility.mandy,
         onPressed: () {
@@ -80,65 +83,62 @@ class _MyListsPageState extends State<MyListsPage> {
                 builder: (context) => const CreateListPage(),
               ));
         },
-        child: const Icon(Icons.add, color: ColorsUtility.rhino),
+        child: const Icon(Icons.add, color: Colors.white),
       ),
       body: SafeArea(
-        child: Container(
-            color: ColorsUtility.rhino,
-            child: Column(
-              children: [
-                Expanded(
-                  child: ListView.builder(
-                    itemBuilder: (context, index) {
-                      return _CustomListItem(
-                        route: getLists,
-                        id: _allLists[index]['id'] as int,
-                        index: index,
-                        listName: _allLists[index]['name'].toString(),
-                        sumWords: _allLists[index]['sum_word'] as int,
-                        sumUnlearned:
-                            _allLists[index]['sum_unlearned'].toString(),
-                        pressController: pressController,
-                        updatePressController: updatePressController,
-                        deleteIndexList: deleteIndexList,
-                      );
-                    },
-                    itemCount: _allLists.length,
-                  ),
-                ),
-                if (pressController)
-                  Container(
-                    margin: const EdgeInsets.symmetric(vertical: 5),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: [
-                        TextButton(
-                          style: TextButton.styleFrom(
-                            backgroundColor: ColorsUtility.mandy,
-                            elevation: 10,
-                            foregroundColor: ColorsUtility.rhino,
-                            padding: const EdgeInsets.symmetric(horizontal: 30),
-                          ),
-                          onPressed: () {
-                            deleteLists();
-                          },
-                          child: const Text('Delete'),
-                        ),
-                        TextButton(
-                          style: TextButton.styleFrom(
-                            backgroundColor: ColorsUtility.mandy,
-                            elevation: 10,
-                            foregroundColor: ColorsUtility.rhino,
-                            padding: const EdgeInsets.symmetric(horizontal: 30),
-                          ),
-                          onPressed: () {},
-                          child: const Text('Cancel'),
-                        ),
-                      ],
+        child: Column(
+          children: [
+            Expanded(
+              child: ListView.builder(
+                itemBuilder: (context, index) {
+                  return _CustomListItem(
+                    route: getLists,
+                    id: _allLists[index]['id'] as int,
+                    index: index,
+                    listName: _allLists[index]['name'].toString(),
+                    sumWords: _allLists[index]['sum_word'] as int,
+                    sumUnlearned: _allLists[index]['sum_unlearned'].toString(),
+                    pressController: pressController,
+                    updatePressController: updatePressController,
+                    deleteIndexList: deleteIndexList,
+                  );
+                },
+                itemCount: _allLists.length,
+              ),
+            ),
+            if (pressController)
+              Container(
+                margin: const EdgeInsets.symmetric(vertical: 5),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    TextButton(
+                      style: TextButton.styleFrom(
+                        backgroundColor: ColorsUtility.mandy,
+                        elevation: 10,
+                        foregroundColor: ColorsUtility.rhino,
+                        padding: const EdgeInsets.symmetric(horizontal: 30),
+                      ),
+                      onPressed: () {
+                        deleteLists();
+                      },
+                      child: const Text('Delete'),
                     ),
-                  ),
-              ],
-            )),
+                    TextButton(
+                      style: TextButton.styleFrom(
+                        backgroundColor: ColorsUtility.mandy,
+                        elevation: 10,
+                        foregroundColor: ColorsUtility.rhino,
+                        padding: const EdgeInsets.symmetric(horizontal: 30),
+                      ),
+                      onPressed: () {},
+                      child: const Text('Cancel'),
+                    ),
+                  ],
+                ),
+              ),
+          ],
+        ),
       ),
     );
   }
@@ -178,7 +178,7 @@ class _CustomListItemState extends State<_CustomListItem> {
       sumUnlearned = int.parse(widget.sumUnlearned!);
     }
     return Card(
-      color: ColorsUtility.chinaIvory,
+      color: ColorsUtility.spindle,
       child: ListTile(
         onTap: () {
           Navigator.push(

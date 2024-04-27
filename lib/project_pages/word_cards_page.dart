@@ -83,7 +83,7 @@ class _WordCardsPageState extends State<WordCardsPage> {
                   selectedOne: selectedRadioButton!,
                 ),
                 const Divider(),
-                const TextUtility(
+                const CustomTextWidget(
                     txt: 'lists',
                     color: ColorsUtility.rhino,
                     size: SizesUtility.defaultSize),
@@ -131,7 +131,7 @@ class _WordCardsPageState extends State<WordCardsPage> {
                           customToastMsg('please select a list');
                         }
                       },
-                      child: const TextUtility(
+                      child: const CustomTextWidget(
                         txt: 'Start!',
                         color: ColorsUtility.spindle,
                         size: SizesUtility.defaultSize,
@@ -176,7 +176,7 @@ class _ListsToBeAskedState extends State<ListsToBeAsked> {
   @override
   Widget build(BuildContext context) {
     return ListTile(
-      title: TextUtility(
+      title: CustomTextWidget(
         txt: title!,
         color: ColorsUtility.rhino,
         size: SizesUtility.defaultSize,
@@ -228,7 +228,7 @@ class _WhichRadioButtonState extends State<WhichRadioButton> {
   @override
   Widget build(BuildContext context) {
     return ListTile(
-      title: TextUtility(
+      title: CustomTextWidget(
         txt: widget.title,
         color: ColorsUtility.rhino,
         size: SizesUtility.defaultSize,

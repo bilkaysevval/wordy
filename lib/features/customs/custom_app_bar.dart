@@ -6,11 +6,12 @@ import 'custom_popup_menu.dart';
 import 'custom_text_widget.dart';
 
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
-  const CustomAppBar(
-      {super.key,
-      required this.title,
-      required this.context,
-      required this.actionType});
+  const CustomAppBar({
+    super.key,
+    required this.title,
+    required this.context,
+    required this.actionType,
+  });
   final String title;
   final BuildContext context;
   final ActionType actionType;
@@ -20,17 +21,19 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
       builder: (context, constraints) {
         return AppBar(
           actions: [
-            CustomAppBarActionWithTwoParameters(actionType: actionType)
+            CustomAppBarActionWithTwoParameters(
+              actionType: actionType,
+            )
           ],
-          iconTheme: const IconThemeData(color: ColorsUtility.chinaIvory),
+          iconTheme: const IconThemeData(color: Colors.white),
           backgroundColor: ColorsUtility.rhino,
           // elevation: 10,
           title: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              TextUtility(
+              CustomTextWidget(
                   txt: title,
-                  color: ColorsUtility.chinaIvory,
+                  color: Colors.white,
                   size: SizesUtility.defaultSize),
               // SizedBox(
               //   height: MediaQuery.of(context).size.height,
@@ -50,8 +53,10 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
 }
 
 class CustomAppBarActionWithTwoParameters extends StatelessWidget {
-  const CustomAppBarActionWithTwoParameters(
-      {super.key, required this.actionType});
+  const CustomAppBarActionWithTwoParameters({
+    super.key,
+    required this.actionType,
+  });
   final ActionType actionType;
   @override
   Widget build(BuildContext context) {

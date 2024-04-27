@@ -5,7 +5,7 @@ import '../features/customs/custom_app_bar.dart';
 import '../features/customs/custom_text_widget.dart';
 import '../features/project_utilities/colors_utility.dart';
 import '../features/project_utilities/sizes_utility.dart';
-import 'drawer.dart';
+import 'learn_page.dart';
 import 'my_lists_page.dart';
 
 class MainPage extends StatefulWidget {
@@ -20,12 +20,14 @@ class _MainPageState extends State<MainPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: CustomAppBar(
-          context: context, title: 'wordy', actionType: ActionType.logo),
-      drawer: const DrawerPageView(),
+        context: context,
+        title: 'wordy',
+        actionType: ActionType.logo,
+      ),
+      // drawer: const DrawerPageView(),
       body: SafeArea(
         child: Container(
           alignment: Alignment.center,
-          color: ColorsUtility.rhino,
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
@@ -53,10 +55,17 @@ class _MainPageState extends State<MainPage> {
                   color2: ColorsUtility.mandy,
                 ),
               ),
-              const _CustomCard(
-                text: 'Try Me!',
-                color1: ColorsUtility.mandy,
-                color2: ColorsUtility.mandy,
+              GestureDetector(
+                onTap: () => Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const LearnPage(),
+                    )),
+                child: const _CustomCard(
+                  text: 'Try Me!',
+                  color1: ColorsUtility.mandy,
+                  color2: ColorsUtility.mandy,
+                ),
               ),
             ],
           ),
@@ -92,7 +101,7 @@ class _CustomCard extends StatelessWidget {
                 color2,
               ]),
         ),
-        child: TextUtility(
+        child: CustomTextWidget(
             txt: text,
             size: SizesUtility.titleSize,
             color: ColorsUtility.rhino));

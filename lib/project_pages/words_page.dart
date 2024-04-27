@@ -4,7 +4,6 @@ import 'package:wordy/features/customs/custom_toast_message.dart';
 import '../database/db/db.dart';
 import '../database/models/words_model.dart';
 import '../features/customs/custom_app_bar.dart';
-import '../features/customs/custom_popup_menu.dart';
 import '../features/project_utilities/colors_utility.dart';
 
 class WordsPage extends StatefulWidget {
@@ -74,69 +73,65 @@ class _WordsPageState extends State<WordsPage> {
       appBar: CustomAppBar(
           context: context, title: listName!, actionType: ActionType.popupMenu),
       body: SafeArea(
-        child: Container(
-          color: ColorsUtility.rhino,
-          child: Column(
-            children: [
-              Expanded(
-                child: ListView.builder(
-                  itemBuilder: (context, index) {
-                    return _CustomWordItem(
-                      wordID: _wordsList[index].id!,
-                      index: index,
-                      wordENG: _wordsList[index].word_eng!,
-                      wordTR: _wordsList[index].word_tr!,
-                      status: _wordsList[index].status!,
-                      wordsList: _wordsList,
-                      pressController: pressController,
-                      deleteIndexList: deleteIndexList,
-                      updatePressController: updatePressController,
-                    );
-                  },
-                  itemCount: _wordsList.length,
+        child: Column(
+          children: [
+            Expanded(
+              child: ListView.builder(
+                itemBuilder: (context, index) {
+                  return _CustomWordItem(
+                    wordID: _wordsList[index].id!,
+                    index: index,
+                    wordENG: _wordsList[index].word_eng!,
+                    wordTR: _wordsList[index].word_tr!,
+                    status: _wordsList[index].status!,
+                    wordsList: _wordsList,
+                    pressController: pressController,
+                    deleteIndexList: deleteIndexList,
+                    updatePressController: updatePressController,
+                  );
+                },
+                itemCount: _wordsList.length,
+              ),
+            ),
+            if (pressController)
+              Container(
+                margin: const EdgeInsets.symmetric(vertical: 5),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    TextButton(
+                      style: TextButton.styleFrom(
+                        backgroundColor: ColorsUtility.mandy,
+                        elevation: 10,
+                        foregroundColor: ColorsUtility.rhino,
+                        padding: const EdgeInsets.symmetric(horizontal: 30),
+                      ),
+                      onPressed: () {
+                        setState(() {
+                          deleteWords();
+                        });
+                      },
+                      child: const Text('Delete'),
+                    ),
+                    TextButton(
+                      style: TextButton.styleFrom(
+                        backgroundColor: ColorsUtility.mandy,
+                        elevation: 10,
+                        foregroundColor: ColorsUtility.rhino,
+                        padding: const EdgeInsets.symmetric(horizontal: 30),
+                      ),
+                      onPressed: () {
+                        setState(() {
+                          updatePressController(!pressController);
+                          pressController = false;
+                        });
+                      },
+                      child: const Text('Cancel'),
+                    ),
+                  ],
                 ),
               ),
-              const CustomPopupMenu(),
-              if (pressController)
-                Container(
-                  margin: const EdgeInsets.symmetric(vertical: 5),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      TextButton(
-                        style: TextButton.styleFrom(
-                          backgroundColor: ColorsUtility.mandy,
-                          elevation: 10,
-                          foregroundColor: ColorsUtility.rhino,
-                          padding: const EdgeInsets.symmetric(horizontal: 30),
-                        ),
-                        onPressed: () {
-                          setState(() {
-                            deleteWords();
-                          });
-                        },
-                        child: const Text('Delete'),
-                      ),
-                      TextButton(
-                        style: TextButton.styleFrom(
-                          backgroundColor: ColorsUtility.mandy,
-                          elevation: 10,
-                          foregroundColor: ColorsUtility.rhino,
-                          padding: const EdgeInsets.symmetric(horizontal: 30),
-                        ),
-                        onPressed: () {
-                          setState(() {
-                            updatePressController(!pressController);
-                            pressController = false;
-                          });
-                        },
-                        child: const Text('Cancel'),
-                      ),
-                    ],
-                  ),
-                ),
-            ],
-          ),
+          ],
         ),
       ),
     );
@@ -191,7 +186,7 @@ class _CustomWordItemState extends State<_CustomWordItem> {
   @override
   Widget build(BuildContext context) {
     return Card(
-      color: ColorsUtility.chinaIvory,
+      color: ColorsUtility.spindle,
       child: ListTile(
         onLongPress: () {
           setState(() {

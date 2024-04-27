@@ -21,32 +21,32 @@ class _DrawerPageViewState extends State<DrawerPageView> {
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
             Image.asset('assets/logo/wordy_logo.png'),
-            const TextUtility(
+            const CustomTextWidget(
                 txt: 'WORDY',
                 color: ColorsUtility.mandy,
                 size: SizesUtility.mainSize),
-            const TextUtility(
+            const CustomTextWidget(
                 txt: 'Your funny vocabulary app :)',
                 color: ColorsUtility.rhino,
                 size: SizesUtility.defaultSize),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                const TextUtility(
+                const CustomTextWidget(
                     txt: 'for my github account',
                     color: ColorsUtility.rhino,
                     size: SizesUtility.defaultSize),
                 TextButton(
                     onPressed:
                         () {}, // for using this click link we have to use url_launcher package
-                    child: const TextUtility(
+                    child: const CustomTextWidget(
                       txt: 'click here!',
                       color: ColorsUtility.mandy,
                       size: SizesUtility.defaultSize,
                     )),
               ],
             ),
-            const TextUtility(
+            const CustomTextWidget(
                 txt:
                     'Version', // for getting version of app we have to use package_info_plus package
                 color: ColorsUtility.mandy,

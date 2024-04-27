@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 
 class SizesUtility {
-  static const double defaultSize = 20;
+  static const double fontSize = 12;
+  static const double defaultSize = 16;
   static const double titleSize = 30;
   static const double wordsSize = 40;
   static const double mainSize = 70;

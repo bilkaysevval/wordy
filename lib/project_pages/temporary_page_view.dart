@@ -48,7 +48,7 @@ class _TemporaryPageViewState extends State<TemporaryPageView> {
                 padding: const EdgeInsets.symmetric(vertical: 175),
                 child: Image.asset("assets/logo/wordy_logo.png"),
               ),
-              const TextUtility(
+              const CustomTextWidget(
                   txt: "wordy",
                   color: ColorsUtility.mandy,
                   size: SizesUtility.mainSize),
