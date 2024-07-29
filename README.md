@@ -1,2 +1,2 @@
 # wordy
- an english vocabulary application
+ an english vocabulary application but not completed yet
